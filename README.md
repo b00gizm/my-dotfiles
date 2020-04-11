@@ -7,7 +7,7 @@ b00gizm's very opinionated dotfiles
 For maximium awesomeness, run this in the terminal of your new machine:
 
 ```bash
-curl -L https://raw.github.com/b00giZm/dotfiles/master/install.sh | bash
+curl -L https://raw.github.com/b00giZm/my-dotfiles/master/install.sh | bash
 ```
 
 ## Maintainer
