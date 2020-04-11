@@ -1,0 +1,37 @@
+tap "homebrew/cask"
+
+brew "awscli"
+brew "composer"
+brew "ffmpeg"
+brew "fzf"
+brew "jq"
+brew "mas"
+brew "neovim"
+brew "node"
+brew "php"
+brew "python3"
+brew "thefuck"
+brew "tldr"
+brew "tmux"
+brew "tree"
+
+cask "docker"
+cask "google-chrome"
+cask "iterm2"
+cask "notion"
+cask "sequel-pro"
+cask "spotify"
+cask "visual-studio-code"
+
+cask "epic-games"
+cask "steam"
+
+mas 'Dashlane - Password Manager (6.2004.0)', id: 552383089
+mas 'Deliveries (3.2.2)', id: 924726344
+mas 'Divvy - Window Manager (1.5.2)', id: 413857545
+mas 'Keynote (10.0)', id: 409183694
+mas 'Pages (10.0)', id: 409201541
+mas 'Numbers (10.0)', id: 409203825
+mas 'Slack (4.4.2)', id: 803453959
+mas 'Tweetbot 3 for Twitter (3.3.3)', id: 1384080005
+mas 'Yoink - Improved Drag and Drop (3.5.8)', id: 457622435

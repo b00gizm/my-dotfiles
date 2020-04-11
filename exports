@@ -1,0 +1,12 @@
+# Override in exports.local
+
+# Set default editor
+export EDITOR=nvim
+
+# Expand path
+export PATH="$PATH:$HOME/.dotfiles/bin"
+
+# Export machine specific environment variables
+if [ -f ${HOME}/.dotfiles/exports.local ]; then
+    source ${HOME}/.dotfiles/exports.local
+fi
