@@ -70,7 +70,7 @@ if ! [ -d "${HOME}/.nvm" ]; then
     NVM_VERSION="v0.35.3"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
 fi
-nvm install --lts; nvm use --lts
+. ${NVM_DIR}/nvm.sh; nvm install --lts; nvm use --lts
 
 ### Install various dev tools via NPM
 npm install -g \
