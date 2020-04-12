@@ -65,8 +65,8 @@ print_info "📦 Installing z - Jump around…"
 curl -fLo ~/.z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh && chmod +x ~/.z.sh
 
 ### Install nvm Node Version Manager
+print_info "📦 Installing Node.js LTS (nvm) incl. various dev tools"
 if ! [ -d "${HOME}/.nvm" ]; then
-    print_info "📦 Installing nvm…"
     NVM_VERSION="v0.35.3"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
 fi
@@ -77,6 +77,21 @@ NG_CLI_ANALYTICS=ci npm install -g \
     @angular/cli \
     gatsby-cli \
     typescript
+
+### Install Xdebug for PHP
+if ! [ "$(php -m | grep Xdebug)" ]; then
+    print_info "🐞 Installing Xdebug for PHP…"
+    XDEBUG_VERSION="2.9.4"
+    curl -fLo /tmp/xdebug-${XDEBUG_VERSION}.tgz http://xdebug.org/files/xdebug-${XDEBUG_VERSION}.tgz
+    tar -xvzf /tmp/xdebug-${XDEBUG_VERSION}.tgz -C /tmp
+    pushd /tmp/xdebug-${XDEBUG_VERSION}
+    phpize && ./configure && make
+    extensionDir="$(php -i | sed -n '/^extension_dir/p' | awk '{print $5}')"
+    cp modules/xdebug.so ${extensionDir}
+    phpIniFile="$(php -i | sed -n '/^Loaded Configuration File/p' | awk '{print $5}')"
+    echo "zend_extension = ${extensionDir}/xdebug.so" >> ${phpIniFile}
+    popd
+fi
 
 print_info "🤓 Configuring Neovim…"
 mkdir -p ${HOME}/.config/nvim
