@@ -12,6 +12,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt-get update \
     && sudo apt install -y \
         awscli \
+	dnsutils \
 	fzf \
         git \
 	jq \
@@ -32,8 +33,7 @@ sudo apt-get update \
 	tmux \
 	tree \
 	yarn \
-	zsh \
-    && sudo apt autoremove -y
+	zsh
 
 # Install Docker with convenience script
 if ! [ -x "$(command -v docker)" ]; then
