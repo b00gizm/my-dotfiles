@@ -49,7 +49,14 @@ print_header
 if [[ "$OSTYPE" == "darwin"* ]]; then
     print_info "💻 WELCOME TO YOUR BRAND NEW MAC! LET ME SET IT UP FOR YOU…"
     source ${DIR}/macos/init.sh
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    if [[ "$(lsb_release -si)" == "Raspbian" ]]; then
+        print_info "🍓 WELCOME TO YOUR BRAND NEW RASPBERRY PI! LET ME SET IT UP FOR YOU…"
+        source ${DIR}/raspbian/init.sh
+    fi
 fi
+
+exit
 
 ### Install oh-my-zsh
 print_info "📦 Installing oh-my-zsh…"
