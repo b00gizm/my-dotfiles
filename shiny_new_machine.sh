@@ -73,7 +73,7 @@ fi
 . ${NVM_DIR}/nvm.sh; nvm install --lts; nvm use --lts
 
 ### Install various dev tools via NPM
-npm install -g \
+NG_CLI_ANALYTICS=ci npm install -g \
     @angular/cli \
     gatsby-cli \
     typescript
