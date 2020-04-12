@@ -14,9 +14,10 @@ sudo apt-get update \
         awscli \
 	dnsutils \
 	fzf \
-        git \
+    git \
 	jq \
 	nodejs \
+	openjdk-11-jdk \
 	php7.3 \
 	php7.3-intl \
 	php7.3-json \
