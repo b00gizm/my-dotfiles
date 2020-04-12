@@ -16,6 +16,7 @@ brew "thefuck"
 brew "tldr"
 brew "tmux"
 brew "tree"
+brew "yarn"
 
 cask "docker"
 cask "google-chrome"
