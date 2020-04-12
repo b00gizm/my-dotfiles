@@ -56,8 +56,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     fi
 fi
 
-exit
-
 ### Install oh-my-zsh
 print_info "📦 Installing oh-my-zsh…"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
