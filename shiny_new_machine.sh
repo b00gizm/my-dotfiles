@@ -87,9 +87,9 @@ if ! [ "$(php -m | grep Xdebug)" ]; then
     pushd /tmp/xdebug-${XDEBUG_VERSION}
     phpize && ./configure && make
     extensionDir="$(php -i | sed -n '/^extension_dir/p' | awk '{print $5}')"
-    cp modules/xdebug.so ${extensionDir}
+    sudo cp modules/xdebug.so ${extensionDir}
     phpIniFile="$(php -i | sed -n '/^Loaded Configuration File/p' | awk '{print $5}')"
-    echo "zend_extension = ${extensionDir}/xdebug.so" >> ${phpIniFile}
+    echo "zend_extension = ${extensionDir}/xdebug.so" | sudo tee -a ${phpIniFile} > /dev/null
     popd
 fi
 
