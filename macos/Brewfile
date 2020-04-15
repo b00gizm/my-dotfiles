@@ -25,6 +25,7 @@ cask "notion"
 cask "pdf-expert"
 cask "sequel-pro"
 cask "spotify"
+cask "tunnelblick"
 cask "visual-studio-code"
 cask "zoomus"
 
