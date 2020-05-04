@@ -1,3 +1,6 @@
+" General settings
+:let mapleader = ","
+
 call plug#begin()
 
 " NERDTree file system explorer
@@ -72,5 +75,21 @@ augroup fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
+
+
+" vim-graphql
+" https://github.com/jparise/vim-graphql
+Plug 'jparise/vim-graphql'
+
+
+" vim-unimpaired
+" https://github.com/tpope/vim-unimpaired
+Plug 'tpope/vim-unimpaired'
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
 
 call plug#end()
