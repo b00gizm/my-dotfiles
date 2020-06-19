@@ -4,7 +4,7 @@
 function server() {
     local port="${1:-8000}";
     sleep 1 && open "http://localhost:${port}/" &
-    python3 -m http.server "port"
+    python3 -m http.server "${port}"
 }
 
 # Start a PHP server from a directory, optionally specifying the port
