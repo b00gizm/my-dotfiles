@@ -18,6 +18,9 @@ if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
    fi
 fi
 
+### Install Rosetta 2 legacy apps support
+sudo softwareupdate --install-rosetta
+
 ### Homebrew
 if ! [ -x "$(command -v brew)" ]; then
     print_info "📦 Installing Homebrew…"
