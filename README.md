@@ -9,7 +9,7 @@ b00gizm's very opinionated dotfiles
 * 📦 Install apps via [Homebrew](https://brew.sh/) and [APT](https://packages.debian.org/).
 * 💯 Become a better human being by ditching `bash` for [oh-my-zsh](https://ohmyz.sh/).
 * 🐳 [Docker](https://www.docker.com/) and [Kubernetes](https://kubernetes.io/) included.
-* 🤓 Highly modded [Neovim](https://neovim.io/) for maximum productivity.
+* 🚀 [SpaceVim](https://spacevim.org/) for maximum productivity.
 * 💻 Java, Python, PHP, Node.js, and TypeScript (plus tooling) included.
 * 🔋 Lots of cool shell aliases and plugins that you'll never use.
 * 🧘 Sensible [macOS system defaults](https://github.com/b00giZm/my-dotfiles/blob/master/macos/set_defaults.sh) (optional).

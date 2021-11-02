@@ -60,6 +60,10 @@ fi
 print_info "📦 Installing oh-my-zsh…"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+### Install Powerlevel10k
+print_info "📦 Installing powerlevel10k…"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 # Install z.sh
 print_info "📦 Installing z - Jump around…"
 curl -fLo ~/.z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh && chmod +x ~/.z.sh
@@ -67,21 +71,15 @@ curl -fLo ~/.z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh && chmod 
 ### Install nvm Node Version Manager
 print_info "📦 Installing Node.js LTS (nvm) incl. various dev tools"
 if ! [ -d "${HOME}/.nvm" ]; then
-    NVM_VERSION="v0.35.3"
+    NVM_VERSION="v0.39.0"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
 fi
 . ${NVM_DIR}/nvm.sh; nvm install --lts; nvm use --lts
 
-### Install various dev tools via NPM
-NG_CLI_ANALYTICS=ci npm install -g \
-    @angular/cli \
-    gatsby-cli \
-    typescript
-
 ### Install Xdebug for PHP
 if ! [ "$(php -m | grep Xdebug)" ]; then
     print_info "🐞 Installing Xdebug for PHP…"
-    XDEBUG_VERSION="2.9.4"
+    XDEBUG_VERSION="3.1.1"
     curl -fLo /tmp/xdebug-${XDEBUG_VERSION}.tgz http://xdebug.org/files/xdebug-${XDEBUG_VERSION}.tgz
     tar -xvzf /tmp/xdebug-${XDEBUG_VERSION}.tgz -C /tmp
     pushd /tmp/xdebug-${XDEBUG_VERSION}
@@ -93,18 +91,9 @@ if ! [ "$(php -m | grep Xdebug)" ]; then
     popd
 fi
 
-print_info "🤓 Configuring Neovim…"
+print_info "🚀 Configuring SpaceVim…"
 mkdir -p ${HOME}/.config/nvim
-pip3 install --user --upgrade autopep8 flake8 pynvim
-pecl install msgpack
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-initFile=${DIR}/.config/nvim/init.vim
-if check_overwrite ${HOME}/.config/nvim/init.vim; then 
-    rm ${HOME}/.config/nvim/init.vim 2>/dev/null
-    ln -s "$(cd "$(dirname "${initFile}")"; pwd -P)/$(basename "${initFile}")" ${HOME}/.config/nvim/init.vim
-fi
-print_info "💡 Install Neovim plugins with 'nvim +PlugInstall'"
+curl -sLf https://spacevim.org/install.sh | bash
 
 print_info "⚡️ Writing .zshrc…"
 if check_overwrite ${HOME}/.zshrc; then
