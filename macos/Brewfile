@@ -34,7 +34,7 @@ cask "setapp"
 cask "spotify"
 cask "tunnelblick"
 cask "visual-studio-code"
-cask "zoomus"
+cask "zoom"
 
 cask "epic-games"
 cask "steam"
