@@ -42,6 +42,7 @@ cask "steam"
 
 mas 'Fantastical - Calendar & Tasks (3.5)', id: 975937182
 mas 'Notability (11.0.1)', id: 360593530
+mas 'Parcel - Delivery Tracking (7.2)', id: 639968404
 mas 'Pixelmator Pro (2.2)', id: 1289583905
 mas 'Slack for Desktop (4.21.1)', id: 803453959
 mas 'Tasks: To-Do List & Reminders (1.8.4)', id: 1502903102
