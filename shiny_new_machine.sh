@@ -52,6 +52,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ "$(lsb_release -si)" == "Raspbian" ]]; then
         print_info "🍓 WELCOME TO YOUR BRAND NEW RASPBERRY PI! LET ME SET IT UP FOR YOU…"
         source ${DIR}/raspbian/init.sh
+    elif [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
+        print_info "🤖 WELCOME TO GITHUB CODESPACES! LET ME SET IT UP FOR YOU…"
+        source ${DIR}/debian/init.sh
     fi
 fi
 
@@ -97,7 +100,7 @@ mkdir -p ${HOME}/.config/nvim
 curl -sLf https://spacevim.org/install.sh | bash
 
 print_info "⚡️ Writing .zshrc…"
-if check_overwrite ${HOME}/.zshrc; then
+if ! [ -f "${HOME}/.zshrc" ]; then
     zshrcFile=${DIR}/.zshrc
     rm ${HOME}/.zshrc 2>/dev/null
     ln -s "$(

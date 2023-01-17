@@ -1,21 +1,30 @@
 #!/usr/bin/env bash
 
+exec 2>&1
+set -x
+
 ### Xcode Command Line Tools
 
 # thx  https://github.com/alrra/dotfiles/blob/c2da74cc333/os/os_x/install_applications.sh#L39
-if [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; then
+if [ $(
+    xcode-select -p &>/dev/null
+    printf $?
+) -ne 0 ]; then
     print_info "📦 Installing Xcode command line toolsi…"
-    xcode-select --install &> /dev/null
+    xcode-select --install &>/dev/null
     # Wait until the Xcode Command Line Tools are installed
-    while [ $(xcode-select -p &> /dev/null; printf $?) -ne 0 ]; do
+    while [ $(
+        xcode-select -p &>/dev/null
+        printf $?
+    ) -ne 0 ]; do
         sleep 5
     done
-	xcode-select -p &> /dev/null
-	if [ $? -eq 0 ]; then
+    xcode-select -p &>/dev/null
+    if [ $? -eq 0 ]; then
         # Prompt user to agree to the terms of the Xcode license
         # https://github.com/alrra/dotfiles/issues/10
-       sudo xcodebuild -license
-   fi
+        sudo xcodebuild -license
+    fi
 fi
 
 ### Install Rosetta 2 legacy apps support

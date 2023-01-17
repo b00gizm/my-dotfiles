@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+exec 2>&1
+set -x
+
 # Ask for the sudoer password upfront
 sudo -v
 
