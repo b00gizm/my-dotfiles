@@ -52,7 +52,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if [[ "$(lsb_release -si)" == "Raspbian" ]]; then
         print_info "🍓 WELCOME TO YOUR BRAND NEW RASPBERRY PI! LET ME SET IT UP FOR YOU…"
         source ${DIR}/raspbian/init.sh
-    elif [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
+    elif [[ "$(lsb_release -si)" == "Debian" ]]; then
         print_info "🤖 WELCOME TO GITHUB CODESPACES! LET ME SET IT UP FOR YOU…"
         source ${DIR}/debian/init.sh
     fi
