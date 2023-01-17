@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR=$(dirname "${BASH_SOURCE}");
+DIR=$(dirname "${BASH_SOURCE}")
 
 ### Helpers
 print_header() {
@@ -10,7 +10,7 @@ print_header() {
     echo " ___/ / / / / / / / / /_/ /  / /|  /  __/ |/ |/ /  / /  / / /_/ / /__/ / / / / / / /  __/  "
     echo "/____/_/ /_/_/_/ /_/\__, /  /_/ |_/\___/|__/|__/  /_/  /_/\__,_/\___/_/ /_/_/_/ /_/\___/   "
     echo "                   /____/                                                                  "
-    echo "                                                                                           " 
+    echo "                                                                                           "
 
 }
 
@@ -31,7 +31,7 @@ print_success() {
 
 check_overwrite() {
     if [ -f "$1" ]; then
-        read -p "$(print_warning "You're about to overwrite '$1'. Continue? (y/n) ")" -n 1;
+        read -p "$(print_warning "You're about to overwrite '$1'. Continue? (y/n) ")" -n 1
         echo ""
         if [[ $REPLY =~ ^[Yy]$ ]]; then
             true
@@ -42,7 +42,6 @@ check_overwrite() {
         true
     fi
 }
-
 
 print_header
 
@@ -74,10 +73,12 @@ if ! [ -d "${HOME}/.nvm" ]; then
     NVM_VERSION="v0.39.0"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh | bash
 fi
-. ${NVM_DIR}/nvm.sh; nvm install --lts; nvm use --lts
+. ${NVM_DIR}/nvm.sh
+nvm install --lts
+nvm use --lts
 
 ### Install Xdebug for PHP
-if ! [ "$(php -m | grep Xdebug)" ]; then
+if [ "$(php -v >/dev/null 2>&1)" ] && ! [ "$(php -m | grep Xdebug)" ]; then
     print_info "🐞 Installing Xdebug for PHP…"
     XDEBUG_VERSION="3.1.1"
     curl -fLo /tmp/xdebug-${XDEBUG_VERSION}.tgz http://xdebug.org/files/xdebug-${XDEBUG_VERSION}.tgz
@@ -87,7 +88,7 @@ if ! [ "$(php -m | grep Xdebug)" ]; then
     extensionDir="$(php -i | sed -n '/^extension_dir/p' | awk '{print $5}')"
     sudo cp modules/xdebug.so ${extensionDir}
     phpIniFile="$(php -i | sed -n '/^Loaded Configuration File/p' | awk '{print $5}')"
-    echo "zend_extension = ${extensionDir}/xdebug.so" | sudo tee -a ${phpIniFile} > /dev/null
+    echo "zend_extension = ${extensionDir}/xdebug.so" | sudo tee -a ${phpIniFile} >/dev/null
     popd
 fi
 
@@ -99,7 +100,10 @@ print_info "⚡️ Writing .zshrc…"
 if check_overwrite ${HOME}/.zshrc; then
     zshrcFile=${DIR}/.zshrc
     rm ${HOME}/.zshrc 2>/dev/null
-    ln -s "$(cd "$(dirname "${zshrcFile}")"; pwd -P)/$(basename "${zshrcFile}")" ${HOME}/.zshrc
+    ln -s "$(
+        cd "$(dirname "${zshrcFile}")"
+        pwd -P
+    )/$(basename "${zshrcFile}")" ${HOME}/.zshrc
 fi
 
 echo ""
