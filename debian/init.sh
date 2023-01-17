@@ -12,6 +12,6 @@ sudo apt-get install -y \
   fzf \
   python3-dev \
   python3-pip \
-  python3-setuptool \
+  python3-setuptools \
   tmux &&
   pip3 install thefuck --user
