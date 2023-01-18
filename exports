@@ -4,7 +4,7 @@
 export EDITOR=nvim
 
 # Expand path
-export PATH="$PATH:$HOME/.dotfiles/bin"
+export PATH="$PATH:$HOME/.dotfiles/bin:$HOME/.local/bin"
 
 # Export machine specific environment variables
 if [ -f ${HOME}/.dotfiles/exports.local ]; then
