@@ -65,6 +65,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ### Install Powerlevel10k
 print_info "📦 Installing powerlevel10k…"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+cp ${DIR}/.config/powerlevel10k/.p10k.zsh ${HOME}/.p10k.zsh
 
 # Install z.sh
 print_info "📦 Installing z - Jump around…"
